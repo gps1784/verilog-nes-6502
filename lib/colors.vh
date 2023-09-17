@@ -1,0 +1,7 @@
+`define COLORIZE(msg, color) $sformatf("%c[%0dm%0s%c[0m", 27, color, msg, 27)
+`define RED(msg)     `COLORIZE(msg, 31)
+`define GREEN(msg)   `COLORIZE(msg, 32)
+`define YELLOW(msg)  `COLORIZE(msg, 33)
+`define BLUE(msg)    `COLORIZE(msg, 34)
+`define MAGENTA(msg) `COLORIZE(msg, 35)
+`define CYAN(msg)    `COLORIZE(msg, 36)

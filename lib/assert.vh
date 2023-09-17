@@ -22,6 +22,15 @@ endmodule
     `ASSERT_DISPLAY(`RED(msg)); \
   end while(0)
 
+`define ASSERT_START(mod) \
+  do begin \
+    ASSERTIONS.PASSED = 0; \
+    ASSERTIONS.FAILED = 0; \
+    ASSERTIONS.TOTAL  = 0; \
+    $dumpfile($sformatf("%s.vcd", `__FILE__)); \
+    $dumpvars(0, mod); \
+  end while(0)
+
 `define ASSERT_SUMMARY \
   do begin \
     $display("------------------------------"); \

@@ -4,6 +4,8 @@ module ASSERTIONS;
   integer PASSED = 0;
   integer FAILED = 0;
   integer TOTAL  = 0;
+  string  FILE    = "";
+  integer FILELEN = 0;
 endmodule
 
 `define ASSERT_DISPLAY(msg) $display("%s:%0d (in %m) %s", `__FILE__, `__LINE__, msg)
@@ -27,7 +29,13 @@ endmodule
     ASSERTIONS.PASSED = 0; \
     ASSERTIONS.FAILED = 0; \
     ASSERTIONS.TOTAL  = 0; \
-    $dumpfile($sformatf("%s.vcd", `__FILE__)); \
+    $display("------------------------------"); \
+    $display(`CYAN($sformatf("%s", `__FILE__))); \
+    $display("------------------------------"); \
+    ASSERTIONS.FILE    = $sformatf("%s", `__FILE__); \
+    ASSERTIONS.FILELEN = ASSERTIONS.FILE.len(); \
+    ASSERTIONS.FILE    = $sformatf("%s.vcd", ASSERTIONS.FILE.substr(0, ASSERTIONS.FILELEN - 3)); \
+    $dumpfile(ASSERTIONS.FILE); \
     $dumpvars(0, mod); \
   end while(0)
 

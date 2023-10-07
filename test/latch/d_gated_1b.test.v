@@ -10,6 +10,7 @@ module latch_d_gated_1b_test;
   latch_d_gated_1b test(in, out, enabled);
 
   initial begin
+    `ASSERT_START(latch_d_gated_1b_test);
     // set to 0
     enabled  <= 1;
     in       <= 0;
@@ -80,6 +81,8 @@ module latch_d_gated_1b_test;
     expected <= 1;
     #1;
     `ASSERT_EQ(expected, out);
+
+    `ASSERT_FINISH;
 
   end
 

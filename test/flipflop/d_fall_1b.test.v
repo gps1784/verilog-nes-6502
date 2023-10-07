@@ -77,6 +77,8 @@ module flipflop_d_fall_1b_test;
     #1;
     `ASSERT_EQ(expected, out);
 
+    `ASSERT_FINISH;
+
   end
 endmodule
 
